@@ -5,11 +5,10 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 @Configuration
 public class OpenApiConfig {
@@ -24,11 +23,9 @@ public class OpenApiConfig {
                 .title("Book Manager API")
                 .version("1.0")
                 .description("API для управления книгами"))
-            // Сервер с HTTPS для production
             .servers(List.of(
                 new Server().url(baseUrl).description("Current server")
             ))
-            // Basic Auth в Swagger UI
             .addSecurityItem(new SecurityRequirement().addList("basicAuth"))
             .components(new io.swagger.v3.oas.models.Components()
                 .addSecuritySchemes("basicAuth", new SecurityScheme()

@@ -2,10 +2,13 @@ package org.govnorganization.bookmanager.bookmweb.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.govnorganization.bookmanager.bookmweb.service.BooksService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URI;
 
 @Slf4j
 @RestController
@@ -18,9 +21,11 @@ public class BooksController {
   }
 
   @GetMapping
-  public String getStatus() {
-    log.info("app is up");
-    return "redirect:/books";
+  public ResponseEntity<Void> getStatus() {
+    log.info("app is up, redirecting to /books");
+    return ResponseEntity.status(HttpStatus.FOUND)
+        .location(URI.create("/bookm-web/books"))
+        .build();
   }
 
   @GetMapping("/books")
