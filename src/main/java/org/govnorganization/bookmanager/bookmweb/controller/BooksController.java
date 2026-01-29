@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/bookm-web")
 public class BooksController {
     private final BooksService booksService;
     public   BooksController (BooksService booksService)
     {
         this.booksService = booksService;
+    }
+
+    @GetMapping
+    public String getStatus(){
+        return "app is up";
     }
 
     
