@@ -1,6 +1,5 @@
 package org.govnorganization.bookmanager.bookmweb.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDto {
-   private int id;
-   private String name;
-
+  private int id;
+  private String name;
 }

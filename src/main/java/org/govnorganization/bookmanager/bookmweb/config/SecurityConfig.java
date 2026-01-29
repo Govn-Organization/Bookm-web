@@ -19,25 +19,22 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-        .csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests(auth -> auth
-            // Всё требует авторизации (включая Swagger)
-            .anyRequest().authenticated()
-        )
+    http.csrf(AbstractHttpConfigurer::disable)
+        .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
         .httpBasic(Customizer.withDefaults());
-    
+
     return http.build();
   }
 
   @Bean
   public UserDetailsService userDetailsService() {
-    var user = User.builder()
-        .username("bookmadmin")
-        .password(passwordEncoder().encode("bookmpassword"))
-        .roles("ADMIN")
-        .build();
-    
+    var user =
+        User.builder()
+            .username("bookmadmin")
+            .password(passwordEncoder().encode("bookmpassword"))
+            .roles("ADMIN")
+            .build();
+
     return new InMemoryUserDetailsManager(user);
   }
 
