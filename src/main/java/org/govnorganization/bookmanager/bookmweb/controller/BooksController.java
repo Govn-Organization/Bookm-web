@@ -3,12 +3,12 @@ package org.govnorganization.bookmanager.bookmweb.controller;
 
 import org.govnorganization.bookmanager.bookmweb.service.BooksService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/bookm-web")
+@RestController
+@RequestMapping()
 public class BooksController {
     private final BooksService booksService;
     public   BooksController (BooksService booksService)
@@ -16,7 +16,8 @@ public class BooksController {
         this.booksService = booksService;
     }
 
-    @GetMapping
+    
+    @GetMapping("/hel")
     public ResponseEntity<?> getAllBooks(){
         return ResponseEntity.ok(booksService.getAllBooksService());
     }

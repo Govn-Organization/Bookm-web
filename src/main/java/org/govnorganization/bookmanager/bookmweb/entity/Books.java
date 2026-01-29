@@ -1,5 +1,6 @@
 package org.govnorganization.bookmanager.bookmweb.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
@@ -21,5 +22,6 @@ public class Books {
 
   @ManyToOne
   @JoinColumn(name = "autotas_id")
+  @JsonBackReference
   private Autotas autotas;
 }
